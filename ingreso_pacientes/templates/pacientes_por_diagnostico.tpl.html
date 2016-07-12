@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacientes</title>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <td>
+                #
+            </td>
+            <td>
+                nombres
+            </td>
+            <td>
+                cedula
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for d in diagnosticos %}
+            <tr>
+            <td colspan="3">
+                d.codigo_diagnostico
+            </td>
+            </tr>
+        {% for p in list %}
+        <tr>
+            <td>
+                {{ p.nro_historia }}
+            </td>
+            <td>
+                <a href="/pacientes/{{ p.id }}">
+                    {{ p.paciente }}
+                </a>
+            </td>
+            <td>
+                {{ p.paciente.cedula }}
+            </td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

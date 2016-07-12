@@ -1,0 +1,14 @@
+language: python
+python:
+  - "2.7"
+
+before_install:
+  - "pip install -r requirements.txt"
+
+
+script:
+  - "coverage run --source=ingreso_pacientes manage.py test ingreso_pacientes"
+  - "py.test"
+
+after_script:
+  "coveralls"

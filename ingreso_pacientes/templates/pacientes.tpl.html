@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacientes</title>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <td>
+                #
+            </td>
+            <td>
+                nombres
+            </td>
+            <td>
+                cedula
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in list %}
+        <tr>
+            <td>
+                {{ p.nro_historia }}
+            </td>
+            <td>
+                <a href="/pacientes/{{ p.id }}">
+                    {{ p.paciente }}
+                </a>
+            </td>
+            <td>
+                {{ p.paciente.cedula }}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br/>
+    <div>
+        <form action="/pacientes/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            {{ form_h }}
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+    <br/>
+    {% if mensaje %}
+    <div>
+        <blockquote>
+            {{ mensaje }}
+        </blockquote>
+    </div>
+    {% endif %}
+
+</body>
+</html>

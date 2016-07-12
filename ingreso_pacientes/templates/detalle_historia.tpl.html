@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ historia.paciente }}</title>
+    <div>
+        <p>
+            {{ historia.paciente }}
+        </p>
+    </div>
+    <br/>
+    <div>
+        <p>
+            {{ historia.nro_historia}}
+        </p>
+    </div>
+    <br/>
+    <div>
+        <table>
+        <thead>
+        <tr>
+            <td>
+                Fecha
+            </td>
+            <td>
+                diagnostico
+            </td>
+            <td>
+                codigo
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in historia.consultas.all %}
+        <tr>
+            <td>
+                {{ p.fecha }}
+            </td>
+            <td>
+                {{ p.diagnostico }}
+            </td>
+            <td>
+                {{ p.codigo_diagnostico }}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <br/>
+    <div>
+        <form action="/pacientes/{{ historia.id }}/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+    <br/>
+    {% if mensaje %}
+    <div>
+        <blockquote>
+            {{ mensaje }}
+        </blockquote>
+    </div>
+    {% endif %}
+</head>
+<body>
+
+</body>
+</html>
