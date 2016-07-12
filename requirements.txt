@@ -1,4 +1,4 @@
-Django==1.8.5
+Django==1.9.7
 coverage
 coveralls
 pytest-django
